@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Prediction</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 50px; background: #87ceeb; }
+    form { max-width: 400px; margin: auto; display: flex; flex-direction: column; gap: 10px; }
+    input, select, button { padding: 10px; font-size: 16px; }
+    #result { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Weather Prediction</h1>
+  <form method="POST" action="/predict">
+    <input type="number" name="MinTemp" placeholder="Min Temp" required>
+    <input type="number" name="MaxTemp" placeholder="Max Temp" required>
+    <input type="number" name="Rainfall" placeholder="Rainfall" required>
+    <input type="number" name="Humidity9am" placeholder="Humidity 9am" required>
+    <input type="number" name="Humidity3pm" placeholder="Humidity 3pm" required>
+    <input type="number" name="WindSpeed9am" placeholder="Wind Speed 9am" required>
+    <input type="number" name="WindSpeed3pm" placeholder="Wind Speed 3pm" required>
+    <input type="number" name="Pressure9am" placeholder="Pressure 9am" required>
+    <input type="number" name="Pressure3pm" placeholder="Pressure 3pm" required>
+    <input type="number" name="Temp9am" placeholder="Temp 9am" required>
+    <input type="number" name="Temp3pm" placeholder="Temp 3pm" required>
+    <select name="RainToday" required>
+      <option value="No">No Rain Today</option>
+      <option value="Yes">Rain Today</option>
+    </select>
+    <button type="submit">Predict</button>
+  </form>
+
+  <div id="result">
+    {% if prediction %}
+      🌦 Prediction: <b>{{ prediction }}</b>
+    {% endif %}
+  </div>
+</body>
+</html>
